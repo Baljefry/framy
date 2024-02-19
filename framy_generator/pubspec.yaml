@@ -15,7 +15,7 @@ dependencies:
   meta: ^1.10.0
   framy_annotation:
     git:
-      url: https://github.com/Baljefry/framy.git
+      url:  https://github.com/r0hit-gupta/framy.git
       ref: master #branch name
       path: framy_annotation  #Folder Path on Github
 
