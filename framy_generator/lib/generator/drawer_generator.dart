@@ -110,7 +110,7 @@ String _generateCustomWidgetTiles(List<FramyObject> objects) {
 
   var result = groupNames.fold(
     '',
-    (prev, groupName) => prev + _generateGroupTiles(groupName, widgetObjects),
+    (prev, groupName) => prev.toString() + _generateGroupTiles(groupName, widgetObjects),
   );
 
   result = widgetObjects
@@ -118,7 +118,7 @@ String _generateCustomWidgetTiles(List<FramyObject> objects) {
       .toList()
       .fold(
         result,
-        (prev, framyObject) => prev + _generateTile(framyObject.name),
+        (prev, framyObject) => prev.toString() + _generateTile(framyObject.name),
       );
   return result;
 }
