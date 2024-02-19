@@ -9,7 +9,7 @@ String generateStoryboardPage(List<FramyObject> widgetFramyObjects,
   final gridViewChildren = pageFramyObjects.fold(
     '',
     (previousValue, element) =>
-        previousValue + _generateStoryboardWidgetPage(element),
+        previousValue.toString() + _generateStoryboardWidgetPage(element),
   );
   return '''
 class FramyStoryboardPage extends StatelessWidget {
