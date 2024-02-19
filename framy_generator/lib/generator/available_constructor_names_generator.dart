@@ -2,7 +2,7 @@ import 'package:framy_generator/framy_object.dart';
 
 String generateAvailableConstructorNames(List<FramyObject> modelObjects) => '''
 Map<String, List<String>> framyAvailableConstructorNames = {
-  ${modelObjects.fold('', (prev, model) => prev + _modelToConstructorNames(model))}
+  ${modelObjects.fold('', (prev, model) => prev.toString() + _modelToConstructorNames(model))}
 };
 ''';
 
