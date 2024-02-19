@@ -13,7 +13,7 @@ String wrapConstructor(FramyObject framyObject) {
       .toList();
 
   var constructor = '''${framyObject.name}(
-  ${constructorDependencies.fold('', (s, dep) => s + generateParamUsageInConstructor(dep))}
+  ${constructorDependencies.fold('', (s, dep) => s.toString() + generateParamUsageInConstructor(dep))}
   )''';
 
   constructor = _wrapConstructorWithProvider(constructor, providerDependencies);
@@ -29,7 +29,7 @@ String _wrapConstructorWithRiverpod(
     return '''
       ProviderScope(
         overrides: [
-          ${riverpodDependencies.fold('', (prev, dep) => prev + _riverpodDependencyToProviderWidget(dep))}
+          ${riverpodDependencies.fold('', (prev, dep) => prev.toString() + _riverpodDependencyToProviderWidget(dep))}
         ],
         child: $constructor,
       )''';
@@ -44,7 +44,7 @@ String _wrapConstructorWithProvider(
     return '''
       provider.MultiProvider(
         providers: [
-          ${providerDependencies.fold('', (prev, dep) => prev + _providerDependencyToProviderWidget(dep))}
+          ${providerDependencies.fold('', (prev, dep) => prev.toString() + _providerDependencyToProviderWidget(dep))}
         ],
         child: $constructor,
       )''';
