@@ -8,7 +8,7 @@ String generateModelConstructorMap(List<FramyObject> modelObjects) {
 final framyModelConstructorMap =
     <String, dynamic Function(FramyDependencyModel)>{
   ...framyEnumMap.map((type, values) => MapEntry(type, (FramyDependencyModel dep) => values.first)),
-  ${models.fold('', (previousValue, model) => previousValue + _generateModelConstructors(model))}
+  ${models.fold('', (previousValue, model) => previousValue.toString() + _generateModelConstructors(model))}
   'String': (dep) => '',
   'double': (dep) => 0.0,
   'int': (dep) => 0,
@@ -19,7 +19,7 @@ final framyModelConstructorMap =
 
 String _generateModelConstructors(FramyObject model) {
   return ''''${model.name}': (dep) {
-    ${model.constructors.fold('', (prev, cons) => prev + _generateModelConstructor(model, cons))}
+    ${model.constructors.fold('', (prev, cons) => prev.toString() + _generateModelConstructor(model, cons))}
     else return null;
   },
 ''';
@@ -37,9 +37,9 @@ String _generateModelConstructor(
 String _generateConstructorBody(
     FramyObject model, FramyObjectConstructor constructor) {
   if (constructor.isBuiltValue) {
-    return "(b) => b${constructor.dependencies.fold('', (s, dep) => s + "..${dep.name} = ${_dependencyValue(dep.name)}\n")});";
+    return "(b) => b${constructor.dependencies.fold('', (s, dep) => s.toString() + "..${dep.name} = ${_dependencyValue(dep.name)}\n")});";
   } else {
-    return "${constructor.dependencies.fold('', (s, dep) => s + _generateParamUsageInConstructor(dep))});";
+    return "${constructor.dependencies.fold('', (s, dep) => s.toString() + _generateParamUsageInConstructor(dep))});";
   }
 }
 
