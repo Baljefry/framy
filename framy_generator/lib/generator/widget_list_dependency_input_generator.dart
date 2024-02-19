@@ -81,7 +81,7 @@ dynamic initList(String listType) {
   ${_generateEmptyList('int')}
   ${_generateEmptyList('double')}
   ${_generateEmptyList('bool')}
-  ${modelObjects.fold('', (prev, modelObject) => prev + _generateEmptyList(modelObject.name) + '\n')}
+  ${modelObjects.fold('', (prev, modelObject) => prev.toString() + _generateEmptyList(modelObject.name) + '\n')}
   else
     return [];
 }
