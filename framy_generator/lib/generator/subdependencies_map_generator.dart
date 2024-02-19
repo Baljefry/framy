@@ -8,7 +8,7 @@ String generateSubDependenciesMap(List<FramyObject> modelObjects) {
   return '''
 List<FramyDependencyModel> createSubDependencies(String type, [String constructor = '']) {
   switch (type + constructor) {
-    ${models.fold('', (prev, model) => prev + _generateForModel(model))}
+    ${models.fold('', (prev, model) => prev.toString() + _generateForModel(model))}
     default: return [];
   }
 }
@@ -18,7 +18,7 @@ List<FramyDependencyModel> createSubDependencies(String type, [String constructo
 
 String _generateForModel(FramyObject object) {
   return '''
-${object.constructors.fold('', (prev, cons) => prev + _generateForConstructor(object, cons))}
+${object.constructors.fold('', (prev, cons) => prev.toString() + _generateForConstructor(object, cons))}
 ''';
 }
 
@@ -27,7 +27,7 @@ String _generateForConstructor(
   return '''
   case '${object.name + constructor.name}':
     return [
-      ${constructor.dependencies.fold('', (prev, dep) => prev + dependencyInitializationLine(dep))}
+      ${constructor.dependencies.fold('', (prev, dep) => prev.toString() + dependencyInitializationLine(dep))}
     ];
   ''';
 }
