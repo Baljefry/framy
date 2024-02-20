@@ -33,5 +33,3 @@ dev_dependencies:
 #    path: ../framy_annotation
 
 analyzer: ^6.0.0
-  enable-experiment:
-    - non-nullable
