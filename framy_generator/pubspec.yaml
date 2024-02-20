@@ -32,6 +32,6 @@ dev_dependencies:
 #  framy_annotation:
 #    path: ../framy_annotation
 
-analyzer:
+analyzer: ^6.0.0
   enable-experiment:
     - non-nullable
